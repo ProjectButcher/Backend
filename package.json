@@ -1,0 +1,8 @@
+{
+  "name": "Backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ProjectButcher/Backend.git",
+  "author": "Gustavo Riedo <gh03012@gmail.com>",
+  "license": "MIT"
+}
