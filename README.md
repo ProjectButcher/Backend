@@ -8,7 +8,16 @@ What the crud API need to do:
 - [ ] Change user password
 - [ ] Delete user
 
+<br/>
+
+- [ ] Create a new registry
+- [ ] Search for registries
+
 ## CRUD API rules
 
-- [ ] Cannot create a user with an already registered emial
+- [ ] Cannot create a user with an already registered email
 - [ ] Cannot create user without name, email or password
+
+<br/>
+
+- [ ] Cannot create a registry without a owner
