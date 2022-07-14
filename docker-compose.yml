@@ -1,0 +1,20 @@
+services:
+  server:
+    container_name: API-ButcherProject-Server
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    links:
+      - database
+  database:
+    container_name: postgres
+    restart: always
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=butcher
+      - POSTGRES_PASSWORD=butcher
+      - POSTGRES_DB=butcher
