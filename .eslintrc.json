@@ -1,20 +1,10 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "standard" // Which code standard is used
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    // New rules go here
-    "rules": {
-    }
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": ["standard"],
+  "plugins": ["@typescript-eslint"],
+  "rules": {}
 }
