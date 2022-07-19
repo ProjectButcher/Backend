@@ -1,48 +1,72 @@
-import { Column, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn
+} from 'typeorm'
 
+import { v4 as uuid } from 'uuid'
+
+export enum UserType {
+  ADMIN = 'admin',
+  USER = 'user',
+}
+@Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  readonly id: String
+  @PrimaryColumn()
+  readonly id: string
 
-  @Column()
-  firstName: String
+  @Column({ name: 'first_name' })
+    firstName: string
 
-  @Column()
-  lastName: String
+  @Column({ name: 'last_name' })
+    lastName: string
 
-  @Column()
-  orgName: String
+  @Column({ name: 'org_name' })
+    orgName: string
 
-  @Column({ enum: ['admin', 'user'] })
-  userType: String
-
-  @Column({ nullable: true })
-  address: String
-
-  @Column({ nullable: true })
-  city: String
-
-  @Column({ nullable: true })
-  state: String
+  @Column({
+    name: 'user_type',
+    type: 'enum',
+    enum: UserType,
+    default: UserType.USER
+  })
+    userType: string
 
   @Column({ nullable: true })
-  zip: String
+    address: string
 
   @Column({ nullable: true })
-  country: String
+    city: string
+
+  @Column({ nullable: true })
+    state: string
+
+  @Column({ nullable: true })
+    zip: string
+
+  @Column({ nullable: true })
+    country: string
 
   @Column({ unique: true })
-  email: String
+    email: string
 
   @Column()
-  password: String
+    password: string
 
-  @Column()
-  lastPassword: String
+  @Column({ name: 'last_password' })
+    lastPassword: string
 
-  @CreateDateColumn()
-  createdAt: Date
+  @CreateDateColumn({ name: 'created_at' })
+    createdAt: Date
 
-  @UpdateDateColumn()
-  updatedAt: Date
+  @UpdateDateColumn({ name: 'updated_at' })
+    updatedAt: Date
+
+  constructor () {
+    if (!this.id) {
+      this.id = uuid()
+    }
+  }
 }
