@@ -1,11 +1,14 @@
 FROM node:16-alpine
 
-WORKDIR /app
-
-COPY . .
+WORKDIR /usr/src/app
 
 RUN npm install --location=global --force yarn
 
+COPY package*.json ./
+COPY .env ./
+
 RUN yarn install
 
-CMD yarn dev
+COPY . .
+
+CMD ["yarn", "start:dev"]
