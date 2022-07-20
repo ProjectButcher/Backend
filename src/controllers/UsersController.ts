@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { UsersServices } from '../services/UsersServices'
 
 export class UsersController {
-  async create (request: Request, response: Response) {
+  async create (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const {
@@ -36,7 +36,7 @@ export class UsersController {
     return response.status(201).json(user)
   }
 
-  async find (request: Request, response: Response) {
+  async find (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const { id } = request.params
@@ -46,7 +46,7 @@ export class UsersController {
     return response.status(200).json(user)
   }
 
-  async getAddress (request: Request, response: Response) {
+  async getAddress (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const { id } = request.params
@@ -56,7 +56,7 @@ export class UsersController {
     return response.status(200).json(address)
   }
 
-  async changeAddress (request: Request, response: Response) {
+  async changeAddress (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const { id } = request.params
@@ -67,7 +67,7 @@ export class UsersController {
     return response.status(204).json(user)
   }
 
-  async changePassword (request: Request, response: Response) {
+  async changePassword (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const { id } = request.params
@@ -78,7 +78,7 @@ export class UsersController {
     return response.status(204).json()
   }
 
-  async delete (request: Request, response: Response) {
+  async delete (request: Request, response: Response): Promise<Response> {
     const usersServices = new UsersServices()
 
     const { id } = request.params

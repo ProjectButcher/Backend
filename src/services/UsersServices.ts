@@ -3,7 +3,7 @@ import { getCustomRepository } from 'typeorm'
 import { User } from '../entities/User'
 import { UsersRepository } from '../repositories/UsersRepository'
 
-interface ICreateUser {
+interface ICreateUserDTO {
   firstName: string;
   lastName: string;
   orgName: string;
@@ -38,7 +38,7 @@ export class UsersServices {
     country,
     email,
     password
-  }: ICreateUser): Promise<User> {
+  }: ICreateUserDTO): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository)
 
     if (!email) {
