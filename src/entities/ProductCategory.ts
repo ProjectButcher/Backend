@@ -6,7 +6,7 @@ export class ProductCategory {
   readonly id: string
 
   @Column()
-    name: string
+  readonly name: string
 
   @CreateDateColumn({ name: 'created_at' })
     createdAt: string
