@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { ProductCategoriesServices } from '../services/ProductCategoriesServices'
 
 export class ProductCategoriesController {
-  async create (request: Request, response: Response) {
+  async create (request: Request, response: Response): Promise<Response> {
     const productCategoriesServices = new ProductCategoriesServices()
 
     const { name } = request.body
@@ -12,7 +12,7 @@ export class ProductCategoriesController {
     return response.status(201).json(productCategory)
   }
 
-  async findAll (request: Request, response: Response) {
+  async findAll (request: Request, response: Response): Promise<Response> {
     const productCategoriesServices = new ProductCategoriesServices()
 
     const productCategories = await productCategoriesServices.findAll()
@@ -20,7 +20,7 @@ export class ProductCategoriesController {
     return response.status(200).json(productCategories)
   }
 
-  async delete (request: Request, response: Response) {
+  async delete (request: Request, response: Response): Promise<Response> {
     const productCategoriesServices = new ProductCategoriesServices()
 
     const { id } = request.params
