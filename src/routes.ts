@@ -4,6 +4,7 @@ import { ProductCategoriesController } from './controllers/ProductCategoriesCont
 import { ProductsController } from './controllers/ProductsController'
 import { UsersController } from './controllers/UsersController'
 import { ensureAuthenticated } from './middlewares/ensureAuthenticated'
+import { ensureAdmin } from './middlewares/ensureAdmin'
 
 const router = Router()
 
@@ -16,7 +17,7 @@ router.get('/users/:id', ensureAuthenticated, usersController.find)
 router.get('/users/:id/address', ensureAuthenticated, usersController.getAddress)
 router.put('/users/:id/address', ensureAuthenticated, usersController.changeAddress)
 router.put('/users/:id/password_reset', usersController.changePassword)
-router.delete('/users/:id', ensureAuthenticated, usersController.delete)
+router.delete('/users/:id', ensureAuthenticated, ensureAdmin, usersController.delete)
 
 const productsController = new ProductsController()
 router.post('/products', ensureAuthenticated, productsController.create)
@@ -25,8 +26,8 @@ router.get('/products/:userID', ensureAuthenticated, productsController.findByUs
 router.delete('/products/:id', ensureAuthenticated, productsController.delete)
 
 const productCategoriesController = new ProductCategoriesController()
-router.post('/product_categories', ensureAuthenticated, productCategoriesController.create)
-router.get('/product_categories', ensureAuthenticated, productCategoriesController.findAll)
-router.delete('/product_categories/:id', ensureAuthenticated, productCategoriesController.delete)
+router.post('/product_categories', ensureAuthenticated, ensureAdmin, productCategoriesController.create)
+router.get('/product_categories', ensureAuthenticated, ensureAdmin, productCategoriesController.findAll)
+router.delete('/product_categories/:id', ensureAuthenticated, ensureAdmin, productCategoriesController.delete)
 
 export { router }
